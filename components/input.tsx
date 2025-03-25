@@ -71,7 +71,6 @@ function nodesToANSI(nodes: NodeList, states: Array<{ fg: number; bg: number; st
       text += "\n";
       return;
     }
-    // Get ANSI code from class name; expect className like "ansi-33"
     const classList = (node as HTMLElement).className.split(" ");
     const ansiClass = classList.find((cls) => cls.startsWith("ansi-"));
     if (!ansiClass) {
@@ -302,7 +301,7 @@ export default function Textbox() {
 
       <CopyButton value="">
         {() => (
-          <Button onClick={handleCopy} variant="filled">
+          <Button onClick={handleCopy} style={copyCount>=10 ? {backgroundColor: "red"} : copyCount>=1 ? {backgroundColor: "green"}: {backgroundColor: "grey"}} variant="filled">
             {copyMessage}
           </Button>
         )}
