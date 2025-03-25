@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useRef, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import {
   Container,
   Title,
@@ -101,6 +101,13 @@ export default function Textbox() {
   const copyTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const editableRef = useRef<HTMLDivElement>(null);
   const [copyMessage, setCopyMessage] = useState("Copy text as Discord formatted");
+
+  useEffect(() => {
+    if (editableRef.current) {
+      editableRef.current.innerHTML =
+        "Welcome to&nbsp;<span class='ansi-33'>Rebane</span>'s <span class='ansi-45'><span class='ansi-37'>Discord</span></span>&nbsp;<span class='ansi-31'>C</span><span class='ansi-32'>o</span><span class='ansi-33'>l</span><span class='ansi-34'>o</span><span class='ansi-35'>r</span><span class='ansi-36'>e</span><span class='ansi-37'>d</span>&nbsp;Text Generator!";
+    }
+  }, []);
 
   // Handler for ANSI style buttons (including Reset, Bold, Underline)
   const handleStyleButtonClick = (ansi: string) => {
@@ -289,11 +296,6 @@ export default function Textbox() {
         contentEditable
         suppressContentEditableWarning
         style={editableStyle}
-        
-        dangerouslySetInnerHTML={{
-          __html:
-            "Welcome to&nbsp;<span class='ansi-33'>Rebane</span>'s <span class='ansi-45'><span class='ansi-37'>Discord</span></span>&nbsp;<span class='ansi-31'>C</span><span class='ansi-32'>o</span><span class='ansi-33'>l</span><span class='ansi-34'>o</span><span class='ansi-35'>r</span><span class='ansi-36'>e</span><span class='ansi-37'>d</span>&nbsp;Text Generator!",
-        }}
       />
 
       <Space h="xl">&nbsp;</Space>
