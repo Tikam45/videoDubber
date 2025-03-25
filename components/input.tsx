@@ -10,7 +10,6 @@ import {
   Tooltip,
   CopyButton,
   Space,
-  Flex,
 } from "@mantine/core";
 
 const editableStyle: React.CSSProperties = {
@@ -198,7 +197,7 @@ export default function Textbox() {
         setCopyMessage("Copy text as Discord formatted");
       }, 2000);
     } catch (err) {
-      
+      console.log(err);
       if (copyCount <= 2) {
         alert("Copying failed for some reason, let's try showing an alert, maybe you can copy it instead.");
         alert(ansiText);
@@ -234,7 +233,7 @@ export default function Textbox() {
   </style>
     <Container size={"screen"} my="xl" style={{display:"flex", textAlign:"center", flexDirection: "column", alignItems: "center"}}>
       <Title order={1} mb="md">
-        Rebane's Discord <span style={{ color: "#5865F2" }}>Colored</span> Text Generator
+        Rebane&apos;s Discord <span style={{ color: "#5865F2" }}>Colored</span> Text Generator
       </Title>
       <Text mb="md">
         This is a simple app that creates colored Discord messages using ANSI color codes.
